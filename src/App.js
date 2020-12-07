@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { AuthProvider } from "./contexts/auth";
+import Admin from "./pages/admin";
+import LandingPage from "./pages/landingpage";
+import Login from "./pages/login";
+import Portfolio from "./pages/portfolio";
+import Register from "./pages/register";
+import { ToastProvider } from 'react-toast-notifications';
+import PrivateRoute from "./components/privateRoute";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    < >
+      <AuthProvider>
+        <ToastProvider
+          autoDismiss
+          autoDismissTimeout={6000}
+          placement="top-right"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Router>
+            <Switch>
+              <Route exact component={LandingPage} path="/" />
+              <Route exact component={Login} path="/login" />
+              <Route exact component={Register} path="/register" />
+              <PrivateRoute component={Admin} path="/admin" />
+              <PrivateRoute component={Portfolio} path="/portfolio" />
+            </Switch>
+          </Router>
+        </ToastProvider>
+      </AuthProvider>
+    </>
   );
 }
 
