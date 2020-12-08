@@ -7,6 +7,7 @@ import Portfolio from "./pages/portfolio";
 import Register from "./pages/register";
 import { ToastProvider } from 'react-toast-notifications';
 import PrivateRoute from "./components/privateRoute";
+import Authentivate from "./components/authentivate";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route exact component={LandingPage} path="/" />
               <Route exact component={Login} path="/login" />
               <Route exact component={Register} path="/register" />
+              <PrivateRoute exact component={Authentivate} path="/authenticate" />
               <PrivateRoute component={Admin} path="/admin" />
               <PrivateRoute component={Portfolio} path="/portfolio" />
             </Switch>

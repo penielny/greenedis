@@ -10,7 +10,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = React.useState()
-
+    const [setting, setSetting] = React.useState(false)
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
@@ -18,15 +18,16 @@ export function AuthProvider({ children }) {
         return unsubscribe
     }, [])
 
-    const signup = (email, password, phone, name,gender) => {
-        return auth.createUserWithEmailAndPassword(email, password).then(
+    const signup = (email, password, phone, name,gender,succcb,failcb) => {
+        return auth.createUserWithEmailAndPassword(email, password)
+        .then(
             user => { 
                 user.user.sendEmailVerification();
                 user.user.updateProfile({ displayName: name });
                 addUser(user.user.uid,gender,phone)
+                succcb()
             }
-
-        )
+        ).catch(error => failcb(error.message) )
     }
 
     const resetpasswod = (email) => {
@@ -45,7 +46,9 @@ export function AuthProvider({ children }) {
         currentUser,
         logout,
         signup,
-        signin
+        signin,
+        setting,
+        setSetting
     }
 
     return (

@@ -6,8 +6,7 @@ import { useAnalytics } from "../contexts/analyticsContext"
 
 export default function Navbar({ url, admin }) {
 
-    const { logout, currentUser } = useAuth()
-    const { setSetting } = useAnalytics();
+    const { logout, currentUser,setSetting } = useAuth()
     const [togleXl, setTogleXl] = useState(false);
     const [toglesm, setToglesm] = useState(false);
 

@@ -3,7 +3,7 @@ import { v4 as uuid4 } from "uuid"
 export const addUser = (uid, gender, phone) => {
     return store.collection("users").doc(uid).set({
         uid: uid,
-        role: 0,
+        role: false,
         gender: gender,
         phone: phone
     })
@@ -11,6 +11,9 @@ export const addUser = (uid, gender, phone) => {
 
 export const getUser = (uid) => {
     return store.collection('users').get(uid)
+}
+export const getUser_doc = (uid) => {
+    return store.collection('users').doc(uid)
 }
 export const getUsers = () =>{
     return store.collection(collections.users).get()

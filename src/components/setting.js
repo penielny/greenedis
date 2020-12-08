@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useAnalytics } from '../contexts/analyticsContext'
+import { useAuth } from '../contexts/auth'
 import Changeimg from './changeimg'
 
 export default function Setting() {
-    const { setting, setSetting } = useAnalytics()
+    const { setting, setSetting } = useAuth()
     const [rejectMsg, setRejectMsg] = useState(
         "Sorry we Appricaite your effort for trying but unfortunatly we cant accept your resume."
     )
