@@ -17,9 +17,9 @@ export default function Login({ history, ...props }) {
     })
   }
 
-  const [loading, setLoading] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const handlelogin = async () => {
     setLoading(true)
@@ -50,9 +50,9 @@ export default function Login({ history, ...props }) {
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-800">
           Sign in to your account
       </h2>
-        <p class="mt-2 text-center text-sm text-gray-600">
+        <p className="mt-2 text-center text-sm text-gray-600">
           Or
-        <Link to="/register" class="font-medium text-green-600 hover:text-green-500 ml-2">
+        <Link to="/register" className="font-medium text-green-600 hover:text-green-500 ml-2">
             Create a free account
         </Link>
         </p>
