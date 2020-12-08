@@ -20,17 +20,17 @@ export default function Register() {
 
   function toast(type, message) {
     addToast(message, {
-      appearance: 'error',
+      appearance: type,
       autoDismiss: true,
     })
   }
   async function handleRegister() {
     console.log(email)
-    if (email !== "" && email !== undefined,name !== "" && name !== undefined,gender !== "" && gender !== undefined, password !== "" && password !== undefined, phone !== "" && phone !== undefined) {
+    if (email !== "" || email !== undefined || name !== "" || name !== undefined || gender !== "" || gender !== undefined||password !== "" || password !== undefined||phone !== "" || phone !== undefined) {
       setLoading(true)
       try {
-        await signup(email, password, phone,name,gender).then(
-          d => toast("error", d.message)
+        await signup(email,password, phone,name,gender).then(
+          d => toast("sucess", "you've successfully created an account please login to continue.")
         ).catch(e => toast("error", e.message)).finally(setLoading(false))
       } catch {
         toast("error", "unable to create account");

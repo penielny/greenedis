@@ -2,11 +2,12 @@ import { Link } from "react-router-dom"
 import { FaLeaf } from "react-icons/fa"
 import { useAuth } from "../contexts/auth"
 import { useState } from "react"
+import { useAnalytics } from "../contexts/analyticsContext"
 
 export default function Navbar({ url, admin }) {
 
     const { logout, currentUser } = useAuth()
-
+    const { setSetting } = useAnalytics();
     const [togleXl, setTogleXl] = useState(false);
     const [toglesm, setToglesm] = useState(false);
 
@@ -31,6 +32,7 @@ export default function Navbar({ url, admin }) {
                                             <Link to={`${url}/applications`} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Applicants</Link>
 
                                             <Link to={`${url}/listing`} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Listing</Link>
+                                            <button onClick={() => setSetting(true)} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Setting</button>
                                         </> :
                                             <>
                                                 <Link to={url} class="focus:bg-gray-900 focus:text-white text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Jobs Listing</Link>
@@ -92,24 +94,25 @@ export default function Navbar({ url, admin }) {
                     toglesm ? <div class=" md:hidden">
                         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 
-                           {
-                               admin ? <>
-                                <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+                            {
+                                admin ? <>
+                                    <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
 
-<a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">New Posting</a>
+                                    <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">New Posting</a>
 
-<a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Applicants</a>
+                                    <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Applicants</a>
 
-<a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Listing</a>
-                               </>:
-                               <>
-                                <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Job Listing</a>
+                                    <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Listing</a>
+                                    <button onClick={() => setSetting(true)} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Setting</button>
+                                </> :
+                                    <>
+                                        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Job Listing</a>
 
-                                <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</a>
-    
-                                <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Feeds</a>
-                                </>
-                           }
+                                        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</a>
+
+                                        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Feeds</a>
+                                    </>
+                            }
                         </div>
                         <div class="pt-4 pb-3 border-t border-gray-700">
                             <div class="flex items-center px-5">

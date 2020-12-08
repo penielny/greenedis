@@ -2,8 +2,10 @@ import { FaDollarSign, FaRss } from "react-icons/fa";
 import { useState } from "react"
 import { newJobPost,createJob} from "../contexts/store";
 import { useToasts } from 'react-toast-notifications'
+import { useAnalytics } from "../contexts/analyticsContext";
 
 export default function Newjob() {
+    const {refreshJobs} = useAnalytics()
     const { addToast } = useToasts()
     const [price, setPrice] = useState("")
     const [company, setCompany] = useState("")
@@ -28,7 +30,7 @@ export default function Newjob() {
         else {
             try {
                 await createJob(company,title,overview,discription,price,location,type_).then(
-                    snapshot => console.log(snapshot)
+                    snapshot => refreshJobs()
                 )
                 setPrice("")
                 setCompany("")

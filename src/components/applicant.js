@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function ApplicantRow({onclick,data}) {
+export default function ApplicantRow({onclick,data,url,id}) {
     return (
         <tr>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
                                                 <div className="flex-shrink-0 h-10 w-10">
-                                                    <img className="h-10 w-10 rounded-full" src={data.photoURL||"https://firebasestorage.googleapis.com/v0/b/greenedis.appspot.com/o/profiles%2FMln6JAiDrfP3dvyflnwVabsZVyQ2?alt=media&token=b7ebda6a-5135-48d8-a03d-d3e8391df91d"} alt="" />
+                                                    <img className="h-10 w-10 rounded-full" src={data.photoURL||"https://firebasestorage.googleapis.com/v0/b/greenedis.appspot.com/o/avatar%2Fkremlin.png?alt=media&token=f3e30ab9-a63d-46c8-9421-dea4b00f907a"} alt="" />
                                                 </div>
                                                 <div className="ml-4">
                                                     <div className="text-sm font-medium text-gray-900">
@@ -27,7 +28,7 @@ export default function ApplicantRow({onclick,data}) {
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            Admin
+                                           <Link to={`${url}/${id}`} className="text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 px-3" >More</Link>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <button onClick={()=>onclick({})} className="focus:outline-none text-indigo-600 hover:text-indigo-900">Actions</button>

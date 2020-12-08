@@ -28,7 +28,9 @@ export default function Login({ history, ...props }) {
         setLoading(false);
         if(data){
           getUser(data.user.uid).then(
-            snapshot => snapshot.docs[0].data().role ?   history.push('/admin'):history.push('/portfolio')
+            snapshot =>{ 
+              snapshot.docs[0].data().role ? history.push('/admin'):history.push('/portfolio')
+            }
           )
         }
       })

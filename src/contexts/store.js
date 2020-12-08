@@ -12,7 +12,9 @@ export const addUser = (uid, gender, phone) => {
 export const getUser = (uid) => {
     return store.collection('users').get(uid)
 }
-
+export const getUsers = () =>{
+    return store.collection(collections.users).get()
+}
 
 export const newJobPost = (price, title, about, discription) => {
     return store.collection('jobs').add({
@@ -84,5 +86,10 @@ const uploadcv = (file) => {
 export const getAllApplicants=()=>{
     return store.collection(collections.appications).get()
 }
+
+export const getApplication = (id) =>{
+    return store.collection(collections.appications).get(id)
+}
+
 
 export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv" }

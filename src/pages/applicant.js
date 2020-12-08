@@ -2,17 +2,19 @@ import ApplicantRow from "../components/applicant";
 import {useState,useEffect} from "react"
 import ApplicantActions from "../components/applicantactions"
 import { getAllApplicants } from "../contexts/store";
+import { useAnalytics } from "../contexts/analyticsContext";
 
-export default function Applicant() {
-
+export default function Applicant({match,...props}) {
+     const {applicants} = useAnalytics()
     const [action, setAction] = useState()
-    const [applications, setApplications] = useState([])
+    const  {url} = match;
+    // const [applications, setApplications] = useState([])
 
-    useEffect(() => {
-       getAllApplicants().then(
-           data=>setApplications(data.docs)
-       )
-    }, [])
+    // useEffect(() => {
+    //    getAllApplicants().then(
+    //        data=>setApplications(data.docs)
+    //    )
+    // }, [])
     return (
         <div className="container mx-auto">
             
@@ -38,7 +40,7 @@ export default function Applicant() {
                                             cv
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Role
+                                            Detailed
                                         </th>
                                         <th scope="col" className="relative px-6 py-3">
                                             <span className="sr-only">Edit</span>
@@ -46,8 +48,8 @@ export default function Applicant() {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                   { applications.length ? applications.map(
-                                       (data,index)=> data.exists && <ApplicantRow data={data.data()} key={index} onclick={setAction}/>) : <></>}
+                                   { applicants.length ? applicants.map(
+                                       (data,index)=> data.exists && <ApplicantRow url={url} id={data.id} data={data.data()} key={index} onclick={setAction}/>) : <></>}
                                 </tbody>
                             </table>
                         </div>
