@@ -5,7 +5,7 @@ export default function Servicecard({title,disc,src:Component}) {
         <div className="flex">
         <div className="flex-shrink-0">
           <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
-            <Component  className="h-6 w-6" />
+            <Component  className="h-6 w-6 text-white" />
           </div>
         </div>
         <div className="ml-4">

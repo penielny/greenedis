@@ -8,6 +8,8 @@ import Register from "./pages/register";
 import { ToastProvider } from 'react-toast-notifications';
 import PrivateRoute from "./components/privateRoute";
 import Authentivate from "./components/authentivate";
+import Managers from "./pages/managers";
+import About from "./pages/about";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
               <Route exact component={LandingPage} path="/" />
               <Route exact component={Login} path="/login" />
               <Route exact component={Register} path="/register" />
+              <Route exact component={Managers} path="/managers" />
+              <Route exact component={About} path="/about" />
               <PrivateRoute exact component={Authentivate} path="/authenticate" />
               <PrivateRoute component={Admin} path="/admin" />
               <PrivateRoute component={Portfolio} path="/portfolio" />
