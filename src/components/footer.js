@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <div className="bg-white border-t">
+        <div className="bg-white border-t sm:px-3">
             <div className="container mx-auto">
-                <div className="flex justify-between border-b py-3 md:mx-20 lg:mx-40">
-                    <div>
+                <div className="md:flex justify-between border-b py-3 md:mx-20 lg:mx-40">
+                    <div className="px-3 md:px-0">
                         <h5 className="text-base text-green-600 font-semibold tracking-wide uppercase">Location</h5>
                         <div className="text-lg capitalize font-medium text-gray-900">
                             <div>
@@ -21,11 +21,11 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="p-3 md:px-0">
                         <h5 className="text-base text-green-600 font-semibold tracking-wide uppercase">Call Us</h5>
                         <h5 className="text-lg capitalize font-medium text-gray-900">+ 233 (0)55 344 3040</h5>
                     </div>
-                    <div>
+                    <div className="p-3 md:px-0">
                         <h5 className="text-base text-green-600 font-semibold tracking-wide uppercase">Or Write</h5>
                         <h5 className="text-lg capitalize font-medium text-gray-900">training@greenedis.com</h5>
                     </div>

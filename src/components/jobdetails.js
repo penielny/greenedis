@@ -9,8 +9,8 @@ export default function JobDetails({ match, ...props }) {
     useEffect(() => {
         getJobPost(match.params.id).then(
             data => {
-                if (data.docs[0].exists) {
-                    setData(data.docs[0].data())
+                if (data.exists) {
+                    setData(data.data())
                 }
             }
         )

@@ -41,7 +41,7 @@ export const createJob = (company, title, brief, discription, ammount, location,
 }
 
 export const getJobPost = (id) => {
-    return store.collection('jobs').get(id)
+    return store.collection('jobs').doc(id).get()
 }
 
 export const getJobs = () => {
