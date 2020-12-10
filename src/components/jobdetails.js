@@ -21,19 +21,19 @@ export default function JobDetails({ match, ...props }) {
                 data ?
                     <div className="bg-white">
                         {applyModal && <ApplyModal doc={match.params.id} data={data} dismiss={setApplyModal} />}
-                        <main class="max-w-2xl lg:max-w-6xl mx-auto px-6">
-                            <article class="border-t-2 border-gray-100 grid py-12 lg:grid-cols-3 lg:gap-16">
-                                <div class="hidden lg:block">
-                                    <aside class="sticky top-6 rounded-lg bg-gray-50 p-8">
-                                        <div class="-my-4 divide-y-2 divide-gray-100">
-                                            <dl class="divide-y-2 divide-gray-100">
-                                                <div class="py-4">
-                                                    <dt class="sr-only">Employment type</dt>
-                                                    <dl class="flex items-start space-x-2 text-sm leading-5">
+                        <main className="max-w-2xl lg:max-w-6xl mx-auto px-6">
+                            <article className="border-t-2 border-gray-100 grid py-12 lg:grid-cols-3 lg:gap-16">
+                                <div className="hidden lg:block">
+                                    <aside className="sticky top-6 rounded-lg bg-gray-50 p-8">
+                                        <div className="-my-4 divide-y-2 divide-gray-100">
+                                            <dl className="divide-y-2 divide-gray-100">
+                                                <div className="py-4">
+                                                    <dt className="sr-only">Employment type</dt>
+                                                    <dl className="flex items-start space-x-2 text-sm leading-5">
                                                         <svg
                                                             viewBox="0 0 20 20"
                                                             fill="currentColor"
-                                                            class="h-5 w-5 text-gray-400"
+                                                            className="h-5 w-5 text-gray-400"
                                                         >
                                                             <path
                                                                 fill-rule="evenodd"
@@ -42,16 +42,16 @@ export default function JobDetails({ match, ...props }) {
                                                             ></path>
                                                             <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15a24.98 24.98 0 01-8-1.308z"></path>
                                                         </svg>
-                                                        <span class="text-gray-800">{data.type}</span>
+                                                        <span className="text-gray-800">{data.type}</span>
                                                     </dl>
                                                 </div>
-                                                <div class="py-4">
-                                                    <dt class="sr-only">Location</dt>
-                                                    <dl class="flex items-start space-x-2 text-sm leading-5">
+                                                <div className="py-4">
+                                                    <dt className="sr-only">Location</dt>
+                                                    <dl className="flex items-start space-x-2 text-sm leading-5">
                                                         <svg
                                                             viewBox="0 0 20 20"
                                                             fill="currentColor"
-                                                            class="h-5 w-5 text-gray-400"
+                                                            className="h-5 w-5 text-gray-400"
                                                         >
                                                             <path
                                                                 fill-rule="evenodd"
@@ -60,17 +60,17 @@ export default function JobDetails({ match, ...props }) {
                                                             ></path>
                                                         </svg>
                                                         <div>
-                                                            <div class="text-gray-500">{data.location}</div>
+                                                            <div className="text-gray-500">{data.location}</div>
                                                         </div>
                                                     </dl>
                                                 </div>
-                                                <div class="py-4">
-                                                    <dt class="sr-only">Salary</dt>
-                                                    <dl class="flex items-start space-x-2 text-sm leading-5">
+                                                <div className="py-4">
+                                                    <dt className="sr-only">Salary</dt>
+                                                    <dl className="flex items-start space-x-2 text-sm leading-5">
                                                         <svg
                                                             viewBox="0 0 20 20"
                                                             fill="currentColor"
-                                                            class="h-5 w-5 text-gray-400"
+                                                            className="h-5 w-5 text-gray-400"
                                                         >
                                                             <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
                                                             <path
@@ -80,39 +80,39 @@ export default function JobDetails({ match, ...props }) {
                                                             ></path>
                                                         </svg>
                                                         <div style={{ fontVariantNumeric: "tabular-nums" }}>
-                                                            <div class="text-gray-800">{`GHS ${data.ammount}`}</div>
+                                                            <div className="text-gray-800">{`GHS ${data.ammount}`}</div>
                                                         </div>
                                                     </dl>
                                                 </div>
                                             </dl>
-                                            <div class="py-4">
-                                                <button onClick={()=>setApplyModal(true)} class="inline-block rounded-md bg-green-900 px-4 py-2.5 text-base leading-6 font-semibold text-white">
+                                            <div className="py-4">
+                                                <button onClick={()=>setApplyModal(true)} className="inline-block rounded-md bg-green-900 px-4 py-2.5 text-base leading-6 font-semibold text-white">
                                                     Apply for this job
                       </button>
                                             </div>
                                         </div>
                                     </aside>
                                 </div>
-                                <div class="col-span-2 space-y-12">
-                                    <div class="space-y-8">
-                                        <div class="space-y-2">
-                                            <h1 class="text-3xl leading-9 font-bold text-gray-900 sm:text-4xl sm:leading-10">
+                                <div className="col-span-2 space-y-12">
+                                    <div className="space-y-8">
+                                        <div className="space-y-2">
+                                            <h1 className="text-3xl leading-9 font-bold text-gray-900 sm:text-4xl sm:leading-10">
                                                 {data.title}
                                             </h1>
-                                            <p class="text-lg leading-7 text-gray-500">
+                                            <p className="text-lg leading-7 text-gray-500">
                                                {data.brief}
                     </p>
                                         </div>
-                                        <div class="flow-root lg:hidden">
-                                            <div class="-my-4">
-                                                <dl class="sm:grid sm:grid-cols-2">
-                                                    <div class="py-2 border-b border-gray-100">
-                                                        <dt class="sr-only">Employment type</dt>
-                                                        <dl class="flex items-start space-x-2 text-sm leading-5">
+                                        <div className="flow-root lg:hidden">
+                                            <div className="-my-4">
+                                                <dl className="sm:grid sm:grid-cols-2">
+                                                    <div className="py-2 border-b border-gray-100">
+                                                        <dt className="sr-only">Employment type</dt>
+                                                        <dl className="flex items-start space-x-2 text-sm leading-5">
                                                             <svg
                                                                 viewBox="0 0 20 20"
                                                                 fill="currentColor"
-                                                                class="h-5 w-5 text-gray-400"
+                                                                className="h-5 w-5 text-gray-400"
                                                             >
                                                                 <path
                                                                     fill-rule="evenodd"
@@ -121,17 +121,17 @@ export default function JobDetails({ match, ...props }) {
                                                                 ></path>
                                                                 <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15a24.98 24.98 0 01-8-1.308z"></path>
                                                             </svg>
-                                                            <span class="text-gray-800">{data.type}</span>
+                                                            <span className="text-gray-800">{data.type}</span>
                                                         </dl>
                                                     </div>
 
-                                                    <div class="py-4 border-b border-gray-100">
-                                                        <dt class="sr-only">Location</dt>
-                                                        <dl class="flex items-start space-x-2 text-sm leading-5">
+                                                    <div className="py-4 border-b border-gray-100">
+                                                        <dt className="sr-only">Location</dt>
+                                                        <dl className="flex items-start space-x-2 text-sm leading-5">
                                                             <svg
                                                                 viewBox="0 0 20 20"
                                                                 fill="currentColor"
-                                                                class="h-5 w-5 text-gray-400"
+                                                                className="h-5 w-5 text-gray-400"
                                                             >
                                                                 <path
                                                                     fill-rule="evenodd"
@@ -140,17 +140,17 @@ export default function JobDetails({ match, ...props }) {
                                                                 ></path>
                                                             </svg>
                                                             <div>
-                                                                <div class="text-gray-500">{data.location}</div>
+                                                                <div className="text-gray-500">{data.location}</div>
                                                             </div>
                                                         </dl>
                                                     </div>
-                                                    <div class="py-4 border-b border-gray-100">
-                                                        <dt class="sr-only">Salary</dt>
-                                                        <dl class="flex items-start space-x-2 text-sm leading-5">
+                                                    <div className="py-4 border-b border-gray-100">
+                                                        <dt className="sr-only">Salary</dt>
+                                                        <dl className="flex items-start space-x-2 text-sm leading-5">
                                                             <svg
                                                                 viewBox="0 0 20 20"
                                                                 fill="currentColor"
-                                                                class="h-5 w-5 text-gray-400"
+                                                                className="h-5 w-5 text-gray-400"
                                                             >
                                                                 <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
                                                                 <path
@@ -160,7 +160,7 @@ export default function JobDetails({ match, ...props }) {
                                                                 ></path>
                                                             </svg>
                                                             <div style={{ fontVariantNumeric: "tabular-nums" }}>
-                                                                <div class="text-gray-800">
+                                                                <div className="text-gray-800">
                                                                    {`GHS ${data.ammount}`}
                               </div>
                                                             </div>
@@ -170,11 +170,11 @@ export default function JobDetails({ match, ...props }) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="prose">
+                                    <div className="prose">
                                         {data.discription}
                                     </div>
                                     <div>
-                                        <button onClick={()=>setApplyModal(true)} class="inline-block rounded-md bg-green-900 px-4 py-2.5 text-base leading-6 font-semibold text-white">
+                                        <button onClick={()=>setApplyModal(true)} className="inline-block rounded-md bg-green-900 px-4 py-2.5 text-base leading-6 font-semibold text-white">
                                             Apply for this job
                   </button>
                                     </div>
