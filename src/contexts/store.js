@@ -1,7 +1,8 @@
 import { bucket, store } from "../firebase"
+import firebase from "firebase"
 import { v4 as uuid4 } from "uuid"
 
-export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv",managers:"managers" }
+export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv",managers:"managers" ,userRequest:"user-request-form"}
 
 export const addUser = (uid, gender, phone) => {
     return store.collection("users").doc(uid).set({
@@ -100,3 +101,16 @@ export const addManager = async (data,uid) =>{
 export const getManager = (uid) => {
     return store.collection(collections.managers).doc(uid).get()
 }
+
+
+// user request
+
+export const makeRequest = (data) =>{
+    return store.collection(collections.userRequest)
+    .add({...data,date:firebase.firestore.Timestamp.now()})
+}
+
+export const getRequest = (id) => {
+    return store.collection(collections.userRequest).doc(id)
+}
+

@@ -15,8 +15,8 @@ export default function About() {
                         </Link>
                         <div className="md:px-5">
                             <Link to="/about" className="mx-2 text-gray-700 font-medium">About</Link>
-                            <Link to="/contacts" className="mx-2 text-gray-700 font-medium">Register</Link>
-                            <Link to="/contacts" className="mx-2 text-gray-700 font-medium">Login</Link>
+                            <Link to="/register" className="mx-2 text-gray-700 font-medium">Register</Link>
+                            <Link to="/login" className="mx-2 text-gray-700 font-medium">Login</Link>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ export default function About() {
                 </div>
 
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }
