@@ -2,7 +2,7 @@ import { bucket, store } from "../firebase"
 import firebase from "firebase"
 import { v4 as uuid4 } from "uuid"
 
-export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv",managers:"managers" ,userRequest:"user-request-form"}
+export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv",managers:"managers" ,userRequest:"user-request-form",managerRequests:"manager-requests"}
 
 export const addUser = (uid, gender, phone) => {
     return store.collection("users").doc(uid).set({
@@ -102,6 +102,15 @@ export const getManager = (uid) => {
     return store.collection(collections.managers).doc(uid).get()
 }
 
+export const getAllManRequest = (email)=>{
+    return store.collection(collections.managerRequests).where("email","==",email)
+}
+
+export const manRequestType = { guestMystrey:"guest-mystrey",fulltimestaff:"full-time-staff",guestfeedback:"guest-feed-back-survey" }
+
+export const makeManRequest = (data)=>{
+    return store.collection(collections.managerRequests).add({...data,time:firebase.firestore.Timestamp.now()})
+}
 
 // user request
 
