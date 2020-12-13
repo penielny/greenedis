@@ -10,29 +10,42 @@ import PrivateRoute from "./components/privateRoute";
 import Authentivate from "./components/authentivate";
 import Managers from "./pages/managers";
 import About from "./pages/about";
+import Manlogin from "./pages/man-login";
+import Manregister from "./pages/man-register";
+import AuthManager from "./pages/authmanager";
+import ManagerRoute from "./components/managerroute";
+import { ManagersProvider } from "./contexts/managers";
+import Validate from "./pages/validate";
 
 function App() {
   return (
     < >
       <AuthProvider>
-        <ToastProvider
-          autoDismiss
-          autoDismissTimeout={6000}
-          placement="top-right"
-        >
-          <Router>
-            <Switch>
-              <Route exact component={LandingPage} path="/" />
-              <Route exact component={Login} path="/login" />
-              <Route exact component={Register} path="/register" />
-              <Route exact component={Managers} path="/managers" />
-              <Route exact component={About} path="/about" />
-              <PrivateRoute exact component={Authentivate} path="/authenticate" />
-              <PrivateRoute component={Admin} path="/admin" />
-              <PrivateRoute component={Portfolio} path="/portfolio" />
-            </Switch>
-          </Router>
-        </ToastProvider>
+        <ManagersProvider>
+
+          <ToastProvider
+            autoDismiss
+            autoDismissTimeout={6000}
+            placement="top-right"
+          >
+            <Router>
+              <Switch>
+                <Route exact component={LandingPage} path="/" />
+                <Route exact component={Login} path="/login" />
+                <Route exact component={Register} path="/register" />
+                <Route exact component={Managers} path="/managers" />
+                <Route exact component={Manlogin} path="/managers/login" />
+                <ManagerRoute exact component={AuthManager} path="/auth-manager" />
+                <ManagerRoute exact component={Validate} path="/validate" />
+                <Route exact component={About} path="/about" />
+                <Route exact component={Manregister} path="/managers/register" />
+                <PrivateRoute exact component={Authentivate} path="/authenticate" />
+                <PrivateRoute component={Admin} path="/admin" />
+                <PrivateRoute component={Portfolio} path="/portfolio" />
+              </Switch>
+            </Router>
+          </ToastProvider>
+        </ManagersProvider>
       </AuthProvider>
     </>
   );

@@ -1,24 +1,26 @@
 import React from 'react'
 import { FaGraduationCap, FaLeaf } from 'react-icons/fa'
-import {GiCoffeeCup} from "react-icons/gi"
-import {AiFillCar} from "react-icons/ai"
-import {GrCart} from "react-icons/gr"
-import {MdMonochromePhotos} from "react-icons/md"
+import { GiCoffeeCup } from "react-icons/gi"
+import { AiFillCar } from "react-icons/ai"
+import { GrCart } from "react-icons/gr"
+import { MdMonochromePhotos } from "react-icons/md"
 import { Link } from 'react-router-dom'
 import Servicecard from '../components/servicecard'
 import "../css/managers.css"
+import Footer from '../components/footer'
 export default function Managers() {
     return (
         <div className="h-screen bg-white">
             <header className=" h-2/3 border-b bg-gray-500 px-3 bg-center bg-no-repeat bg-cover" >
                 <div className="container mx-auto py-5">
                     <div className="flex md:mx-20">
-                        <FaLeaf className="text-green-500  text-3xl" />
+                        <Link to="/">
+                            <FaLeaf className="text-green-500  text-3xl" />
+                        </Link>
                         <div className="md:px-5">
-                            <Link to="/contacts" className="mx-2 text-white font-medium">Contact</Link>
                             <Link to="/about" className="mx-2 text-white font-medium">About</Link>
-                            <Link to="/contacts" className="mx-2 text-white font-medium">Register</Link>
-                            <Link to="/contacts" className="mx-2 text-white font-medium">Login</Link>
+                            <Link to="/managers/register" className="mx-2 text-white font-medium">Register</Link>
+                            <Link to="/managers/login" className="mx-2 text-white font-medium">Login</Link>
                         </div>
                     </div>
                 </div>
@@ -33,12 +35,12 @@ export default function Managers() {
                         </h3>
                         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                             <div className="rounded-md shadow">
-                                <Link to="/register" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
+                                <Link to="/managers/register" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-10">
                                     Get started
                                 </Link>
                             </div>
                             <div className="mt-3 sm:mt-0 sm:ml-3">
-                                <Link to="/login" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-4 md:text-lg md:px-10">
+                                <Link to="/managers/login" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-4 md:text-lg md:px-10">
                                     Account
                                 </Link>
                             </div>
@@ -69,6 +71,7 @@ export default function Managers() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

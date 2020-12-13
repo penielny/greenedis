@@ -1,5 +1,8 @@
 import { bucket, store } from "../firebase"
 import { v4 as uuid4 } from "uuid"
+
+export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv",managers:"managers" }
+
 export const addUser = (uid, gender, phone) => {
     return store.collection("users").doc(uid).set({
         uid: uid,
@@ -46,11 +49,6 @@ export const getJobPost = (id) => {
 
 export const getJobs = () => {
     return store.collection("jobs").get()
-    // .then((querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //         console.log(`${doc.id} => ${doc.data()}`);
-    //     });
-    // });
 }
 
 export const apply = async (currentUser, jobid, link,title) => {
@@ -94,5 +92,11 @@ export const getApplication = (id) =>{
     return store.collection(collections.appications).get(id)
 }
 
+// managers
+export const addManager = async (data,uid) =>{
+    return store.collection(collections.managers).doc(uid).set(data)
+}
 
-export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv" }
+export const getManager = (uid) => {
+    return store.collection(collections.managers).doc(uid).get()
+}

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { getAllApplicants, getJobPost, getUsers } from './store'
+import { getAllApplicants, getJobPost, getJobs, getUsers } from './store'
 import LoadingScreen from "../components/loadingScreen"
 
 const AnalyticsContext = createContext()
@@ -37,7 +37,7 @@ export default function AnalyticsProvider({ children }) {
     }, [])
 
     const jobs_get = () => {
-        getJobPost().then(
+        getJobs().then(
             doc => setJobs(doc.docs)
         ).catch(error => console.log(error.message))
 

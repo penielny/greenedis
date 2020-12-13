@@ -109,6 +109,7 @@ export default function Navbar({ url, admin }) {
                                         <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Job Listing</a>
 
                                         <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</a>
+                                        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Training-Request</a>
 
                                         <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Feeds</a>
                                     </>
