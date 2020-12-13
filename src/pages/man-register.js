@@ -105,11 +105,6 @@ export default function Manregister() {
 }
 
 const categories = [
-    "hotel",
-    "cooking",
-    "brew",
-    "brew",
-    "brew",
-    "brew",
-    "brew",
+    "Hotel",
+    "Resturant"
 ]

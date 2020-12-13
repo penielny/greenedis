@@ -35,7 +35,7 @@ export default function Navbar({ url, admin }) {
                                         </> :
                                             <>
                                                 <Link to={url} class="focus:bg-gray-900 focus:text-white text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Jobs Listing</Link>
-                                                <Link to={`${url}/feeds`} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Feed</Link>
+                                                {/* <Link to={`${url}/feeds`} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Feed</Link> */}
                                                 <Link to={`${url}/training-request`} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Training Request</Link>
 
                                                 <Link to={`${url}/profile`} class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Profile</Link>
@@ -96,22 +96,22 @@ export default function Navbar({ url, admin }) {
 
                             {
                                 admin ? <>
-                                    <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+                                    <Link to={`${url}`} class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</Link>
 
-                                    <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">New Posting</a>
+                                    <Link to={`${url}/post-new`} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">New Posting</Link>
 
-                                    <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Applicants</a>
+                                    <Link to={`${url}/applications`} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Applicants</Link>
 
-                                    <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Listing</a>
+                                    <Link to={`${url}/listing`} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Listing</Link>
                                     <button onClick={() => setSetting(true)} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Setting</button>
                                 </> :
                                     <>
-                                        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Job Listing</a>
+                                        <Link to={`${url}`} class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Job Listing</Link>
 
-                                        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</a>
-                                        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Training-Request</a>
+                                        <Link to={`${url}/profile`} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</Link>
+                                        <Link to={`${url}/training-request`} class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Training-Request</Link>
 
-                                        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Feeds</a>
+                                        {/* <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Feeds</a> */}
                                     </>
                             }
                         </div>
