@@ -10,11 +10,11 @@ export default function Analytics() {
             <div className="px-4 md:px-10 mx-auto w-full mt-10">
                 <div>
                     <div className="flex flex-wrap">
-                        <Card icon={FaChartLine} title="Posted Job" value={jobs.length || 0} lastupdate="" />
-                        <Card icon={CgDatabase} title="Applicants" value={applicants.length || 0} lastupdate="" />
-                        <Card icon={FaUser} title="Registerd Users" value={userCount|| 0} lastupdate="" />
-                        <Card icon={FaUser} title="Hoteliers Requests" value={manRequests.length|| 0} lastupdate="" />
-                        <Card icon={FaUser} title="User Request Forms" value={userRequestForms.length|| 0} lastupdate="" />
+                        <Card icon={FaChartLine} title="Posted Job" value={jobs.length } lastupdate="" />
+                        <Card icon={CgDatabase} title="Applicants" value={applicants.length } lastupdate="" />
+                        <Card icon={FaUser} title="Registerd Users" value={userCount} lastupdate="" />
+                        <Card icon={FaUser} title="Hoteliers Requests" value={manRequests.length} lastupdate="" />
+                        <Card icon={FaUser} title="User Request Forms" value={userRequestForms.length} lastupdate="" />
                     </div>
                 </div>
             </div>
