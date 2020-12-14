@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Card({ title, value, lastupdate ,icon:Component}) {
     return (
-        <div className="w-full lg:w-6/12 xl:w-4/12 px-4">
+        <div className="w-full lg:my-2 lg:w-6/12 xl:w-4/12 px-4">
             <div className="flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-sm ">
                 <div className="flex-auto p-4">
                     <div className="flex flex-wrap">

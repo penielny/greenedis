@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import { makeManRequest, manRequestType } from '../contexts/store'
 
 
-export default function Guestfeedback({ option }) {
+export default function Guestfeedback({ option,email }) {
     const [loading, setLoading] = useState(false)
     const [applied, setApplied] = useState(false)
     const [service, setService] = useState([])
+    const [specialrequest, setSpecialrequest] = useState("")
     function handleSubmit() {
-        setLoading(true)
-        makeManRequest({ service, type: manRequestType.guestfeedback }).then(
-            docSnap => { console.log(docSnap); setApplied(true) }
-        ).catch(error => console.log(error.message)).finally(() => { setLoading(false); })
+        if (service.length > 0 && specialrequest !== ""){
+            setLoading(true)
+            makeManRequest({ service, type: manRequestType.guestfeedback },email).then(
+                docSnap => { console.log(docSnap); setApplied(true) }
+            ).catch(error => console.log(error.message)).finally(() => { setLoading(false); })
+        }
+
     }
     return (
         <div className="p-5">
@@ -36,7 +40,7 @@ export default function Guestfeedback({ option }) {
             </div>
             <div>
                 <h3 className="text-gray-500 font-medium">Other Special Request:</h3>
-                <textarea className="w-full border rounded"></textarea>
+                <textarea value={specialrequest} onChange={e=>setSpecialrequest(e.target.value)} className="w-full border rounded"></textarea>
             </div>
 
             <div className="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

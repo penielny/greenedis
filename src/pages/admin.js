@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ApplicantDetaild from "../components/applicantdetaild";
+import Adminlisting from "../components/adminlisting";
 import Navbar from "../components/navbar";
 import PrivateRoute from "../components/privateRoute";
 import Setting from "../components/setting";
@@ -16,6 +17,7 @@ export default function Admin({ match }) {
             <Setting/>
             <PrivateRoute exact path={path} component={Analytics} />
             <PrivateRoute exact path={`${path}/post-new`} component={Newjob}/>
+            <PrivateRoute exact path={`${path}/listing`} component={Adminlisting}/>
             <PrivateRoute exact path={`${path}/applications`} component={Applicant}/>
             <PrivateRoute exact path={`${path}/applications/:id`} component={ApplicantDetaild}/>
         </div>

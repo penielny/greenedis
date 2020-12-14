@@ -1,7 +1,7 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { makeManRequest, manRequestType } from '../contexts/store'
 
-export default function Guestmysrey({ option }) {
+export default function Guestmysrey({ option,email }) {
 
     const [loading, setLoading] = useState(false)
     const [applied, setApplied] = useState(false)
@@ -9,9 +9,12 @@ export default function Guestmysrey({ option }) {
     const [specialrequest, setSpecialrequest] = useState("")
 
     function handleSubmit() {
+        if (department.length < 0 || specialrequest === "") {
+            return;
+        }
         setLoading(true)
-        makeManRequest({ department, specialrequest, type: manRequestType.guestMystrey }).then(
-            docSnap => {console.log(docSnap);setApplied(true)}
+        makeManRequest({ department, specialrequest, type: manRequestType.guestMystrey },email).then(
+            docSnap => { console.log(docSnap); setApplied(true) }
         ).catch(error => console.log(error.message)).finally(() => { setLoading(false); })
     }
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { makeManRequest, manRequestType } from '../contexts/store'
 
-export default function Fulltimerequestfrom({option}) {
+export default function Fulltimerequestfrom({option,email}) {
     const [loading, setLoading] = useState(false)
     const [applied, setApplied] = useState(false)
     const [frontoffice, setFrontoffice] = useState("")
@@ -11,8 +11,11 @@ export default function Fulltimerequestfrom({option}) {
     const [maintenance, setMaintenance] = useState("")
 
     function handleSubmit() {
+        if(frontoffice === "" || houseKeeping==="" || serviceDepartment==="" || foodDepatment==="" || maintenance === "" ){
+            return ;
+        }
         setLoading(true)
-        makeManRequest({ frontoffice, houseKeeping,serviceDepartment,foodDepatment,maintenance, type: manRequestType.fulltimestaff }).then(
+        makeManRequest({ frontoffice, houseKeeping,serviceDepartment,foodDepatment,maintenance, type: manRequestType.fulltimestaff },email).then(
             docSnap => {console.log(docSnap);setApplied(true)}
         ).catch(error => console.log(error.message)).finally(() => { setLoading(false); })
     }

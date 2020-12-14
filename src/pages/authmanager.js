@@ -17,7 +17,7 @@ export default function AuthManager() {
 const [modal, setModal] = useState(false)
     return (
         <>
-           <Authmanmodal state={modal} setstate={setModal} />
+           <Authmanmodal state={modal} setstate={setModal} email={currentUser.email}/>
             <div className="container mx-auto ">
                 <div className="my-5 border-b flex justify-between items-center">
                     <div>
@@ -36,7 +36,7 @@ const [modal, setModal] = useState(false)
                     </div>
                     <div>
                         <button className="bg-green-400 px-3 py-2 rounded mx-2 text-green-50" onClick={()=>setModal(true)}>Request Staff</button>
-                        <button className="bg-green-400 px-3 py-2 rounded mx-2 text-green-50">Request Training</button>
+                        {/* <button className="bg-green-400 px-3 py-2 rounded mx-2 text-green-50">Request Training</button> */}
                     </div>
                 </div>
                 <div>
