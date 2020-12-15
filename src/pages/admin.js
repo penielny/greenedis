@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ApplicantDetaild from "../components/applicantdetaild";
 import Adminlisting from "../components/adminlisting";
 import Navbar from "../components/navbar";

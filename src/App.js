@@ -22,7 +22,6 @@ function App() {
     < >
       <AuthProvider>
         <ManagersProvider>
-
           <ToastProvider
             autoDismiss
             autoDismissTimeout={6000}

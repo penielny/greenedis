@@ -27,11 +27,11 @@ export default function Managers() {
                 <div className="container mx-auto md:mt-10">
                     <div className="md:mx-20 mt-3">
                         <h1 className="md:w-3/6 text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                            <span className="block xl:inline">Searching for worker</span>
+                            <span className="block xl:inline">Searching for workers</span>
                             <span className="block text-green-600 xl:inline"> to fill a postition ?</span>
                         </h1>
                         <h3 className="text-white font-semibold my-2">
-                            we provide only the best with good morals nad well trained by us.
+                            we provide only the best with good morals and well trained by us.
                         </h3>
                         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                             <div className="rounded-md shadow">

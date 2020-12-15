@@ -12,7 +12,7 @@ export default function Training() {
     const [done, setDone] = useState(false)
 
     function handleSubmit() {
-        if (name == "" || residence == "" || phone == "" || email == "" || department == [] || program == []) {
+        if (name === "" || residence === "" || phone === "" || email === "" || department === [] || program === []) {
             return;
         } else {
             setLoading(true)
@@ -56,7 +56,7 @@ export default function Training() {
                         {
                             departments.map((x, index) => <div className="mx-2">
                                 <input onChange={e => {
-                                    if (e.target.checked == true) {
+                                    if (e.target.checked === true) {
                                         setDepartment([ ...department, x ])
                                     } else {
                                         setDepartment(department.filter(item => item !== x))
@@ -74,7 +74,7 @@ export default function Training() {
                             programs.map((x, index) => <div className="mx-2">
                                 <input
                                     onChange={e => {
-                                        if (e.target.checked == true) {
+                                        if (e.target.checked === true) {
                                             setProgram([ ...program, x ])
                                         } else {
                                             setProgram(program.filter(item => item !== x))
@@ -90,7 +90,7 @@ export default function Training() {
                     <h4 classname="font-semibold leading-3 text-gray-600">NB: Training fees are inclusive of Handbook & Certificate.</h4>
                 </div>
                 <button onClick={handleSubmit} disabled={loading || done} className="bg-green-500 border p-3 bg-transparent rounded text-green-100">
-                   { done == false && loading == false && " Submit Application"}
+                   { done === false && loading === false && " Submit Application"}
                    {loading && <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>

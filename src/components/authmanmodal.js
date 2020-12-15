@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
-import { useAuth } from '../contexts/auth'
 import Fulltimerequestfrom from './fulltimerequestfrom'
 import Guestfeedback from './guestfeedback'
 import Guestmysrey from './guestmysrey'
 
-export default function Authmanmodal({ state, setstate ,email }) {
+export default function Authmanmodal({ state, setstate, email }) {
     const [ooption, setOoption] = useState(0)
     return (
         <div className={`${state ? '' : 'hidden'} fixed z-10 inset-0 overflow-y-auto`}>
@@ -21,12 +20,12 @@ export default function Authmanmodal({ state, setstate ,email }) {
                 <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div className="flex justify-between items-center px-5 pt-5">
                         <div></div>
-                    <FaTimes className="text-gray-600" onClick={()=>setstate(false)}/>
+                        <FaTimes className="text-gray-600" onClick={() => setstate(false)} />
                     </div>
-                    {ooption===1 && <Guestmysrey email={email} option={setOoption} />}
-                   {ooption===2 && <Fulltimerequestfrom email={email} option={setOoption} />}
-                   {ooption===3 && <Guestfeedback email={email} option={setOoption} />}
-                    {ooption===0 && <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    {ooption === 1 && <Guestmysrey email={email} option={setOoption} />}
+                    {ooption === 2 && <Fulltimerequestfrom email={email} option={setOoption} />}
+                    {ooption === 3 && <Guestfeedback email={email} option={setOoption} />}
+                    {ooption === 0 && <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <div className="sm:flex sm:items-start">
 
                             <div className="mt-1 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -36,18 +35,18 @@ export default function Authmanmodal({ state, setstate ,email }) {
                                 <div className="mt-2">
                                     <p className="text-sm text-gray-500">
                                         Plaese Select an option.
-                                </p>
-                                    <div onClick={()=>setOoption(1)} className="w-full cursor-pointer my-2  py-1 rounded flex justify-between items-center">
+                                    </p>
+                                    <div onClick={() => setOoption(1)} className="w-full cursor-pointer my-2  py-1 rounded flex justify-between items-center">
                                         <h5 className="text-green-800">guest mystery shopper request</h5>
-                                      
+
                                     </div>
-                                    <div onClick={()=>setOoption(2)} className="w-full cursor-pointer my-2  py-1 rounded flex justify-between items-center">
+                                    <div onClick={() => setOoption(2)} className="w-full cursor-pointer my-2  py-1 rounded flex justify-between items-center">
                                         <h5 className="text-green-800">full time staff request form</h5>
-                                      
+
                                     </div>
-                                    <div onClick={()=>setOoption(3)} className="w-full cursor-pointer my-2  py-1 rounded flex justify-between items-center">
+                                    <div onClick={() => setOoption(3)} className="w-full cursor-pointer my-2  py-1 rounded flex justify-between items-center">
                                         <h5 className="text-green-800">Guest Feedback Survey Request Form</h5>
-                                      
+
                                     </div>
 
                                 </div>
