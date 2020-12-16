@@ -16,18 +16,21 @@ export default function ApplicantDetaild({ match, jobid, userid, history,...prop
             getApplication(match.params.id)
             .then(
                 doc => {
-                    setApplication(doc.docs[0].data())
-                    getUser(doc.docs[0].data().userUID).then(
+                    console.log(doc.data())
+                    setApplication(doc.data())
+                    getUser(doc.data().userUID).then(
                         data => {
-                            setUser(data.docs[0].data())
-                            getJobPost(jobid).then(
-                                data => setJob(data.docs[0].data())
+                            setUser(data.data())
+                            getJobPost(doc.data().jobid).then(
+                                data => {
+                                    setJob(data.data())
+                                }
                             )
                         }
                     )
                 })
                 .catch(error => console.log(error))
-                .finally(() => {setLoading(false); console.log(user,application,job)})
+                .finally(() => {setLoading(false);})
         } catch (error) {
             console.log(error)
             setLoading(false)

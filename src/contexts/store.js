@@ -16,7 +16,7 @@ export const addUser = (uid, gender, phone) => {
 }
 
 export const getUser = (uid) => {
-    return store.collection('users').get(uid)
+    return store.collection('users').doc(uid).get()
 }
 export const getUser_doc = (uid) => {
     return store.collection('users').doc(uid)
@@ -62,7 +62,8 @@ export const apply = async (currentUser, jobid, link,title) => {
         name: currentUser.displayName,
         photoURL: currentUser.photoURL,
         email: currentUser.email,
-        userUID: currentUser.uid
+        userUID: currentUser.uid,
+        time : firebase.firestore.Timestamp.now()
         // phone,
         // gender
     })
@@ -92,7 +93,7 @@ export const getAllApplicants=()=>{
 }
 
 export const getApplication = (id) =>{
-    return store.collection(collections.appications).get(id)
+    return store.collection(collections.appications).doc(id).get()
 }
 
 // managers

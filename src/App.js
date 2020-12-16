@@ -19,7 +19,7 @@ import Validate from "./pages/validate";
 
 function App() {
   return (
-    < >
+    <>
       <AuthProvider>
         <ManagersProvider>
           <ToastProvider
@@ -30,14 +30,14 @@ function App() {
             <Router>
               <Switch>
                 <Route exact component={LandingPage} path="/" />
+                <Route exact component={About} path="/about" />
                 <Route exact component={Login} path="/login" />
                 <Route exact component={Register} path="/register" />
                 <Route exact component={Managers} path="/managers" />
-                <Route exact component={Manlogin} path="/managers/login" />
-                <ManagerRoute exact component={AuthManager} path="/auth-manager" />
-                <ManagerRoute exact component={Validate} path="/validate" />
-                <Route exact component={About} path="/about" />
                 <Route exact component={Manregister} path="/managers/register" />
+                <Route exact component={Manlogin} path="/managers/login" />
+                <ManagerRoute exact component={Validate} path="/validate" />
+                <ManagerRoute exact component={AuthManager} path="/auth-manager" />
                 <PrivateRoute exact component={Authentivate} path="/authenticate" />
                 <PrivateRoute component={Admin} path="/admin" />
                 <PrivateRoute component={Portfolio} path="/portfolio" />
