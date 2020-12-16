@@ -52,7 +52,7 @@ export default function Authentivate() {
                                     <div>
                                         <FaLeaf className="mx-auto text-3xl text-green-500 mb-3" />
                                         <h5 className="text-center text-sm font-semibold text-gray-600">Please check your connectivity</h5>
-                                        <Link to="/managers/login" className="text-center text-sm font-semibold text-green-600" >or you not a regular user</Link>
+                                       <h5 className="text-center"> <Link to="/managers/login" className="text-center text-sm font-semibold text-green-600" >or you not a regular user</Link></h5>
                                         <div className="flex justify-center items-center my-3">
                                             <button onClick={() => get_user()} className="px-5 py-2 bg-green-600 text-green-100 bg-transparent rounded-full mx-auto text-center">
                                                 <FaRedo />
