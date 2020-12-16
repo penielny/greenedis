@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/auth'
 import LoadingScreen from './loadingScreen'
 import { getUser, getUser_doc } from "../contexts/store"
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { FaLeaf, FaRedo } from 'react-icons/fa'
 
 export default function Authentivate() {
@@ -51,7 +51,8 @@ export default function Authentivate() {
                                 <div className="h-screen flex justify-center items-center">
                                     <div>
                                         <FaLeaf className="mx-auto text-3xl text-green-500 mb-3" />
-                                        <h5 className="text-center text-2xl font-semibold text-gray-600">Please check your connectivity</h5>
+                                        <h5 className="text-center text-sm font-semibold text-gray-600">Please check your connectivity</h5>
+                                        <Link to="/managers/login" className="text-center text-sm font-semibold text-green-600" >or you not a regular user</Link>
                                         <div className="flex justify-center items-center my-3">
                                             <button onClick={() => get_user()} className="px-5 py-2 bg-green-600 text-green-100 bg-transparent rounded-full mx-auto text-center">
                                                 <FaRedo />
@@ -61,7 +62,11 @@ export default function Authentivate() {
                                 </div>
                             </>
                                 :
-                                <Redirect to={user.role ? '/admin' : '/portfolio'} />
+                                <>
+                                    { user.role !== null ? <Redirect to={user.role ? '/admin' : '/portfolio'} /> :
+                                        <Redirect to="/managers/login" />
+                                    }
+                                </>
                         }
                     </>
             }

@@ -69,7 +69,7 @@ export const apply = async (currentUser, jobid, link,title) => {
     })
 }
 
-const uploadcv = (file) => {
+export const uploadcv = (file) => {
     // let cvlink=""
     let uploadTask = bucket.child(`${collections.cv}/${uuid4()}.${file.name.split(".")[file.name.split(".").length - 1]}`).put(file);
     uploadTask.on(

@@ -29,7 +29,7 @@ export default function Navbar({ url, admin }) {
                                             <Link to={`${url}/post-new`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">New Posting</Link>
 
                                             <Link to={`${url}/applications`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Applicants</Link>
-                                            <Link to={`${url}/managers-reuests`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Managers</Link>
+                                            <Link to={`${url}/managers-requests`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Managers</Link>
                                             <Link to={`${url}/user-form`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">User-Forms</Link>
                                             <Link to={`${url}/users`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Users</Link>
 

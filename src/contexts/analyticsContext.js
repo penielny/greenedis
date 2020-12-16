@@ -17,7 +17,7 @@ export default function AnalyticsProvider({ children }) {
     const [userRequestForms, setUserRequestForms] = useState([])
     const [userCount, setUserCount] = useState(0)
     const [loading, setLoading] = useState(false)
-
+    const [users, setUsers] = useState([])
     const [setting, setSetting] = useState(false)
 
 
@@ -47,7 +47,7 @@ export default function AnalyticsProvider({ children }) {
     }
     const get_users = () => {
         getUsers().then(
-            doc => setUserCount(doc.size)
+            doc => {setUserCount(doc.size);setUsers(doc.docs)}
         ).catch(error => console.log(error.message))
     }
     const get_aplicant = () => {
@@ -65,7 +65,7 @@ export default function AnalyticsProvider({ children }) {
             doc=>setUserRequestForms(doc.docs)
         ).catch(error=>console.log(error.message))
     }
-    const value = {userRequestForms, manRequests, setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant }
+    const value = {userRequestForms, manRequests,users,setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant }
     return (
         <AnalyticsContext.Provider value={value}>
             {loading ? <LoadingScreen /> : children}
