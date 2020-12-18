@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { FaChevronLeft, FaLeaf, FaRedo } from 'react-icons/fa'
-import { Link, Redirect } from 'react-router-dom'
+import {FaLeaf, FaRedo } from 'react-icons/fa'
+import {Redirect } from 'react-router-dom'
 import LoadingScreen from '../components/loadingScreen'
 import { useManager } from '../contexts/managers'
 import { getManager } from '../contexts/store'
@@ -15,7 +15,7 @@ export default function Validate({ history }) {
         try {
             getManager(currentUser.uid)
                 .then(doc => {
-                    if (doc.exists == true) {
+                    if (doc.exists === true) {
                         setUser(doc.data())
                         setLoading(false);
                     }
