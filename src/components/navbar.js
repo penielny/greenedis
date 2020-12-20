@@ -6,7 +6,7 @@ import { useAnalytics } from "../contexts/analyticsContext"
 
 export default function Navbar({ url, admin }) {
 
-    const { logout, currentUser,setSetting } = useAuth()
+    const { logout, currentUser, setSetting } = useAuth()
     const [togleXl, setTogleXl] = useState(false);
     const [toglesm, setToglesm] = useState(false);
 
@@ -104,6 +104,9 @@ export default function Navbar({ url, admin }) {
                                     <Link to={`${url}/post-new`} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">New Posting</Link>
 
                                     <Link to={`${url}/applications`} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Applicants</Link>
+                                    <Link to={`${url}/managers-requests`} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Managers</Link>
+                                    <Link to={`${url}/user-form`} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">User-Info</Link>
+                                    <Link to={`${url}/users`} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Users</Link>
 
                                     <Link to={`${url}/listing`} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Listing</Link>
                                     <button onClick={() => setSetting(true)} className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Setting</button>

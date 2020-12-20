@@ -4,12 +4,13 @@ import { v4 as uuid4 } from "uuid"
 import { useAuth } from "./auth"
 
 
-export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv",managers:"managers" ,userRequest:"user-request-form",managerRequests:"manager-requests"}
+export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv", managers: "managers", userRequest: "user-request-form", managerRequests: "manager-requests" }
 
-export const addUser = (uid, gender, phone) => {
+export const addUser = (uid, gender, phone, email) => {
     return store.collection("users").doc(uid).set({
         uid: uid,
         role: false,
+        email: email,
         gender: gender,
         phone: phone
     })
@@ -21,7 +22,7 @@ export const getUser = (uid) => {
 export const getUser_doc = (uid) => {
     return store.collection('users').doc(uid)
 }
-export const getUsers = () =>{
+export const getUsers = () => {
     return store.collection(collections.users).get()
 }
 
@@ -54,16 +55,16 @@ export const getJobs = () => {
     return store.collection("jobs").get()
 }
 
-export const apply = async (currentUser, jobid, link,title) => {
+export const apply = async (currentUser, jobid, link, title) => {
     return store.collection(collections.appications).add({
         jobid,
         cvlink: link,
-        title:title,
+        title: title,
         name: currentUser.displayName,
         photoURL: currentUser.photoURL,
         email: currentUser.email,
         userUID: currentUser.uid,
-        time : firebase.firestore.Timestamp.now()
+        time: firebase.firestore.Timestamp.now()
         // phone,
         // gender
     })
@@ -81,23 +82,23 @@ export const uploadcv = (file) => {
         },
         function () {
             uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-            //     cvlink=downloadURL;
+                //     cvlink=downloadURL;
             });
         }
     );
     // return uploadTask.snapshot.ref.getDownloadURL();
 };
 
-export const getAllApplicants=()=>{
+export const getAllApplicants = () => {
     return store.collection(collections.appications).get()
 }
 
-export const getApplication = (id) =>{
+export const getApplication = (id) => {
     return store.collection(collections.appications).doc(id).get()
 }
 
 // managers
-export const addManager = async (data,uid) =>{
+export const addManager = async (data, uid) => {
     return store.collection(collections.managers).doc(uid).set(data)
 }
 
@@ -105,30 +106,56 @@ export const getManager = (uid) => {
     return store.collection(collections.managers).doc(uid).get()
 }
 
-export const getAllManRequest = (email)=>{
-    return store.collection(collections.managerRequests).where("email","==",email)
+export const getManagerWithEmail = (email) => {
+    return store.collection(collections.managers).where("email", "==", email).get()
 }
-export const getAllManRequests = ()=>{
+
+export const getAllManRequest = (email) => {
+    return store.collection(collections.managerRequests).where("email", "==", email)
+}
+export const getAllManRequests = () => {
     return store.collection(collections.managerRequests).get()
 }
 
-export const manRequestType = { guestMystrey:"guest-mystrey",fulltimestaff:"full-time-staff",guestfeedback:"guest-feed-back-survey" }
+export const manRequestType = { guestMystrey: "guest-mystrey", fulltimestaff: "full-time-staff", guestfeedback: "guest-feed-back-survey" }
 
-export const makeManRequest = (data,email)=>{
-    return store.collection(collections.managerRequests).add({...data,time:firebase.firestore.Timestamp.now(),email})
+export const makeManRequest = (data, email) => {
+    return store.collection(collections.managerRequests).add({ ...data, time: firebase.firestore.Timestamp.now(), email })
+}
+
+export const makeAdmin = (uid, callback) => {
+    return store.collection(collections.users).doc(uid).update({ role: true }).then(data => {
+        callback()
+    }).catch(error => console.log(error))
+}
+
+export const makeRegular = (uid, callback) => {
+    return store.collection(collections.users).doc(uid).update({ role: false }).then(data => {
+        callback()
+    }).catch(error => console.log(error))
+}
+
+export const managerRequest = (id) => {
+    return store.collection(collections.managerRequests).doc(id).get()
+}
+
+export const deletePost = (uid,callback) => {
+    store.collection(collections.jobs).doc(uid).delete()
+    .then(data => callback(uid))
+    .catch(error => console.log(error.message))
 }
 
 // user request
 
-export const makeRequest = (data) =>{
+export const makeRequest = (data) => {
     return store.collection(collections.userRequest)
-    .add({...data,date:firebase.firestore.Timestamp.now()})
+        .add({ ...data, date: firebase.firestore.Timestamp.now() })
 }
 
 export const getRequest = (id) => {
     return store.collection(collections.userRequest).doc(id)
 }
 
-export const getAllUserRequestForm = ()=>{
+export const getAllUserRequestForm = () => {
     return store.collection(collections.userRequest).get()
 }

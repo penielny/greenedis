@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
             user => { 
                 user.user.sendEmailVerification();
                 user.user.updateProfile({ displayName: name });
-                addUser(user.user.uid,gender,phone)
+                addUser(user.user.uid,gender,phone,email)
                 succcb()
             }
         ).catch(error => failcb(error.message) )

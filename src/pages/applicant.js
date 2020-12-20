@@ -1,27 +1,23 @@
 import ApplicantRow from "../components/applicant";
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react"
 import ApplicantActions from "../components/applicantactions"
 import { getAllApplicants } from "../contexts/store";
 import { useAnalytics } from "../contexts/analyticsContext";
 
-export default function Applicant({match,...props}) {
-     const {applicants} = useAnalytics()
+export default function Applicant({ match, ...props }) {
+    const { applicants } = useAnalytics()
     const [action, setAction] = useState()
-    const  {url} = match;
-    // const [applications, setApplications] = useState([])
+    const [key, setKey] = useState("")
+    const { url } = match;
 
-    // useEffect(() => {
-    //    getAllApplicants().then(
-    //        data=>setApplications(data.docs)
-    //    )
-    // }, [])
+
     return (
         <div className="container mx-auto">
-            
 
-           {
-               action ? <ApplicantActions dismiss={setAction} action={action} /> : <></>
-           }
+
+            {
+                action ? <ApplicantActions dismiss={setAction} action={action} /> : <></>
+            }
 
             <div className="flex flex-col">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -48,8 +44,8 @@ export default function Applicant({match,...props}) {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                   { applicants.length ? applicants.map(
-                                       (data,index)=> data.exists && <ApplicantRow url={url} id={data.id} data={data.data()} key={index} onclick={setAction}/>) : <></>}
+                                    {applicants.length ? applicants.map(
+                                        (data, index) => data.exists && <ApplicantRow url={url} id={data.id} data={data.data()} key={index} onclick={setAction} />) : <></>}
                                 </tbody>
                             </table>
                         </div>

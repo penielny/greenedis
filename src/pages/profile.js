@@ -3,6 +3,7 @@ import { AiOutlineCamera, AiOutlineStar } from "react-icons/ai";
 import { useAuth } from "../contexts/auth";
 import { bucket } from "../firebase";
 import firebase from "firebase";
+import { CgLock } from "react-icons/cg";
 
 export default function Profile() {
   const fileupload = useRef(null);
@@ -66,8 +67,8 @@ export default function Profile() {
                 <div className="ml-3">
                   <h3 className="text-4xl">{currentUser.displayName}</h3>
                   <div className="flex items-center font-bold text-gray-500 py-2">
-                    <AiOutlineStar />
-                    <h3 className="text-gray-700 mx-1"> 0.0 Rating</h3>
+                 <CgLock/>
+                    <h3 className="text-gray-700 mx-1">{currentUser.uid}</h3>
                   </div>
                   {file && perc >= 0 ? (
                     <div className="relative pt-1">

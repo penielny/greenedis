@@ -1,10 +1,14 @@
 import React from 'react'
 import { useAnalytics } from '../contexts/analyticsContext'
+import { deletePost } from '../contexts/store'
 
 
 export default function Adminlisting() {
-   const {jobs } =  useAnalytics()
-
+    const { jobs,setJobs } = useAnalytics()
+    const callback = (id) => {
+        console.log(id)
+        setJobs(jobs.filter(item => item.id !==id))
+    }
     return (
         <div className="container mx-auto">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -32,31 +36,31 @@ export default function Adminlisting() {
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 {
-                                    jobs.map((data,index)=><tr key={index}>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="">
+                                    jobs.map((data, index) => <tr key={index}>
+                                        <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="">
-                                                <div className="text-sm font-medium text-gray-900">
-                                                    {data.data().title}
+                                                <div className="">
+                                                    <div className="text-sm font-medium text-gray-900">
+                                                        {data.data().title}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm text-gray-900"> {data.data().company}</div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                {data.data().type}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            -
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900"> {data.data().company}</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            {data.data().type}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        -
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="#" className="text-indigo-600 hover:text-indigo-900">Delete</a>
-                                    </td>
-                                </tr>)
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onClick={() => deletePost(data.id, callback)} className="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                        </td>
+                                    </tr>)
                                 }
 
                             </tbody>

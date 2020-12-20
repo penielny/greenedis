@@ -69,7 +69,7 @@ export default function Newjob() {
                                     </div>
                                     <div className="grid grid-cols-3 gap-6">
                                         <div className="col-span-3 sm:col-span-1">
-                                            <label for="company_website" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="price" className="block text-sm font-medium text-gray-700">
                                                 Price
                                             </label>
                                             <div className="mt-1 flex rounded-md shadow-sm">
@@ -80,7 +80,7 @@ export default function Newjob() {
                                             </div>
                                         </div>
                                         <div className="col-span-3 sm:col-span-1">
-                                            <label for="company_website" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="location" className="block text-sm font-medium text-gray-700">
                                                 Location
                                             </label>
                                             <div className="mt-1 flex rounded-md shadow-sm">
@@ -88,7 +88,7 @@ export default function Newjob() {
                                             </div>
                                         </div>
                                         <div className="col-span-3 sm:col-span-1">
-                                            <label for="company_website" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="type" className="block text-sm font-medium text-gray-700">
                                                 Type
                                             </label>
                                             <div className="mt-1 flex rounded-md shadow-sm">
@@ -98,7 +98,7 @@ export default function Newjob() {
                                     </div>
                                     <div className="grid grid-cols-3 gap-6">
                                         <div className="col-span-3 sm:col-span-3">
-                                            <label for="company_website" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                                                 Title
                                             </label>
                                             <div className="mt-1 flex rounded-md shadow-sm">
@@ -108,7 +108,7 @@ export default function Newjob() {
                                     </div>
                                     <div className="grid grid-cols-3 gap-6">
                                         <div className="col-span-3 sm:col-span-3">
-                                            <label for="company_website" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="company_name" className="block text-sm font-medium text-gray-700">
                                                 Company Name
                                             </label>
                                             <div className="mt-1 flex rounded-md shadow-sm">
@@ -118,7 +118,7 @@ export default function Newjob() {
                                     </div>
                                     <div className="grid grid-cols-3 gap-6">
                                         <div className="col-span-3 sm:col-span-3">
-                                            <label for="company_website" className="block text-sm font-medium text-gray-700">
+                                            <label htmlFor="brief" className="block text-sm font-medium text-gray-700">
                                                 Brief Overview
                                             </label>
                                             <div className="mt-1 flex rounded-md shadow-sm">
@@ -127,7 +127,7 @@ export default function Newjob() {
                                         </div>
                                     </div>
                                     <div>
-                                        <label for="about" className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="discription" className="block text-sm font-medium text-gray-700">
                                             Discription
                                         </label>
                                         <div className="mt-1">

@@ -6,7 +6,7 @@ import { useManager } from '../contexts/managers'
 import { getManager } from '../contexts/store'
 
 export default function Validate({ history }) {
-    const { currentUser, logout } = useManager()
+    const { currentUser } = useManager()
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
