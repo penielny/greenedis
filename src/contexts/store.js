@@ -159,3 +159,13 @@ export const getRequest = (id) => {
 export const getAllUserRequestForm = () => {
     return store.collection(collections.userRequest).get()
 }
+
+// send sms
+export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
+    let YOUR_KEY = ""
+    let SENDER_ID = ""
+    let url = `https://api.arispatbulk.com/sendmessage.php?key=${YOUR_KEY}&message=${MESSAGE_TO_SEND}&senderid=${SENDER_ID}&phone=${RECEIPIENT_TELEPHONE_LIST}`
+    fetch(url)
+    .then(data=>console.log(data))
+    .finally(error=>console.log(error.message))
+}

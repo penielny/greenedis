@@ -15,10 +15,6 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                     ).catch(error => console.log(error.message))
             }
         ).catch(error => console.log(error.message))
-
-        // get the request 
-
-        //get the manager information 
     }, [])
     return (
         <div className="container mx-auto">
@@ -85,7 +81,7 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                             </div>
 
                             {/* ------------ */}
-                          {doc.department && <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            {doc.department && <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">
                                     Departments
                                 </dt>
@@ -108,7 +104,7 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                                     </ul>
                                 </dd>
                             </div>}
-                            {doc.type==="full-time-staff"&&<div className="bg-white  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            {doc.type === "full-time-staff" && <div className="bg-white  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">
                                     Full Time Staff Request
                                 </dt>
@@ -117,27 +113,18 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
 
                                         <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                             <div className="w-0 ">
-                                            <h3 className="text-gray-800 font-semibold">Food Department</h3>
-                                            <h5>{doc.foodDepatment}</h5>
+                                                <h3 className="text-gray-800 font-semibold">Food Department</h3>
+                                                <h5>{doc.foodDepatment}</h5>
                                             </div>
                                             <div className="ml-4 flex-shrink-0">
 
                                             </div>
                                         </li>
-                                        
-                                        <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                                            <div className="w-0 ">
-                                            <h3 className="text-gray-800 font-semibold">Front Office</h3>
-                                            <h5>{doc.frontoffice}</h5>
-                                            </div>
-                                            <div className="ml-4 flex-shrink-0">
 
-                                            </div>
-                                        </li>
                                         <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                             <div className="w-0 ">
-                                            <h3 className="text-gray-800 font-semibold">House Keeping</h3>
-                                            <h5>{doc.houseKeeping}</h5>
+                                                <h3 className="text-gray-800 font-semibold">Front Office</h3>
+                                                <h5>{doc.frontoffice}</h5>
                                             </div>
                                             <div className="ml-4 flex-shrink-0">
 
@@ -145,8 +132,8 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                                         </li>
                                         <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                             <div className="w-0 ">
-                                            <h3 className="text-gray-800 font-semibold">Maintenance</h3>
-                                            <h5>{doc.maintenance}</h5>
+                                                <h3 className="text-gray-800 font-semibold">House Keeping</h3>
+                                                <h5>{doc.houseKeeping}</h5>
                                             </div>
                                             <div className="ml-4 flex-shrink-0">
 
@@ -154,8 +141,17 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                                         </li>
                                         <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                                             <div className="w-0 ">
-                                            <h3 className="text-gray-800 font-semibold">Service Department</h3>
-                                            <h5>{doc.serviceDepartment}</h5>
+                                                <h3 className="text-gray-800 font-semibold">Maintenance</h3>
+                                                <h5>{doc.maintenance}</h5>
+                                            </div>
+                                            <div className="ml-4 flex-shrink-0">
+
+                                            </div>
+                                        </li>
+                                        <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                            <div className="w-0 ">
+                                                <h3 className="text-gray-800 font-semibold">Service Department</h3>
+                                                <h5>{doc.serviceDepartment}</h5>
                                             </div>
                                             <div className="ml-4 flex-shrink-0">
 
@@ -165,7 +161,7 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                                     </ul>
                                 </dd>
                             </div>}
-                           {doc.service && <div className="bg-white  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            {doc.service && <div className="bg-white  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">
                                     Packages
                                 </dt>
