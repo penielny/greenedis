@@ -11,3 +11,4 @@ ReactDOM.render(
 );
 
 
+export const smtpserver = "http://localhost:8080";

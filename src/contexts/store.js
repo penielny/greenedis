@@ -169,3 +169,6 @@ export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
     .then(data=>console.log(data))
     .finally(error=>console.log(error.message))
 }
+export const acceptApplicant = (id) =>{
+    return store.collection(collections.appications).doc(id).set({accepted:true},{merge:true})
+}

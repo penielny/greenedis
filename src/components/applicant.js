@@ -31,7 +31,9 @@ export default function ApplicantRow({ onclick, data, url, id }) {
                 <Link to={`${url}/${id}`} className="text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 px-3" >More</Link>
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <button onClick={() => onclick({})} className="focus:outline-none text-indigo-600 hover:text-indigo-900">Actions</button>
+              { data.accepted === undefined && <button onClick={() => onclick({})} className="focus:outline-none text-indigo-600 hover:text-indigo-900">Actions</button>}
+              {data.accepted==true && <button className="focus:outline-none text-green-600 hover:text-indigo-900">Accepted</button> }
+              {  data.accepted==false && <button className="focus:outline-none text-red-600 hover:text-indigo-900">Recjected</button>}
             </td>
         </tr>
     )

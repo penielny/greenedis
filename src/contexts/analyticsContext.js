@@ -11,6 +11,17 @@ export const useAnalytics = () => {
 
 export default function AnalyticsProvider({ children }) {
 
+    const [applicationAcceptTemplate, setApplicationAcceptTemplate] = useState("")
+    const [applicationRejectTemplate, setApplicationRejectTemplate] = useState("Sorry we Appreciate your effort for trying but unfortunately we cant accept your application now please consider applying for a different job.")
+
+    const [managerAccepptTemplate, setManagerAccepptTemplate] = useState("")
+    const [managerRejectTemplate, setManagerRejectTemplate] = useState("Sorry we can't meet your demands for today. due to some inconvenience.")
+
+    const [userAcceptTemplate, setUserAcceptTemplate] = useState("")
+    const [userRejectTemplate, setUserRejectTemplate] = useState("sorry you application for our  hospitality training program  has been rejected due to some few inconvenience.")
+
+
+
     const [jobs, setJobs] = useState([])
     const [applicants, setApplicants] = useState([])
     const [manRequests, setManRequests] = useState([])
@@ -68,7 +79,7 @@ export default function AnalyticsProvider({ children }) {
             doc=>setUserRequestForms(doc.docs)
         ).catch(error=>console.log(error.message))
     }
-    const value = {acceptlist,setAcceptlist,rejectlist,setRejectlist, userRequestForms, manRequests,users,setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant }
+    const value = {acceptlist,setAcceptlist,rejectlist,setRejectlist, userRequestForms, manRequests,users,setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant ,applicationAcceptTemplate}
     return (
         <AnalyticsContext.Provider value={value}>
             {loading ? <LoadingScreen /> : children}
