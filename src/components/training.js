@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useAuth } from '../contexts/auth'
 import { makeRequest } from '../contexts/store'
 
 export default function Training() {
@@ -10,13 +11,14 @@ export default function Training() {
     const [program, setProgram] = useState([])
     const [loading, setLoading] = useState(false)
     const [done, setDone] = useState(false)
+    const {currentUser} = useAuth()
 
     function handleSubmit() {
         if (name === "" || residence === "" || phone === "" || email === "" || department.length === 0 || program.length === 0) {
             return;
         } else {
             setLoading(true)
-            let data = { name, residence, phone, email, department, program }
+            let data = { name, residence, phone, email, department, program ,image:currentUser.photoURL}
             makeRequest(data).then(
                 doc => setDone(true)
             ).catch(error => console.log(error.message))
