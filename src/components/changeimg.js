@@ -50,8 +50,8 @@ export default function Changeimg() {
     };
 
     return (
-        <main class="max-w-6xl mx-auto px-6">
-            <div class="py-8 space-y-6">
+        <main className="max-w-6xl mx-auto px-6">
+            <div className="py-8 space-y-6">
                 <div className="flex border-b-2 pb-5 items-center">
                     <img
                         className="inline-block h-20 w-20 rounded-full ring-2 ring-white"
