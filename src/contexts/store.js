@@ -172,3 +172,7 @@ export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
 export const acceptApplicant = (id) =>{
     return store.collection(collections.appications).doc(id).set({accepted:true},{merge:true})
 }
+
+export const rejectApplicant = (id) =>{
+    return store.collection(collections.appications).doc(id).set({accepted:false},{merge:true})
+}

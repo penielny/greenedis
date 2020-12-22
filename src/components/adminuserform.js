@@ -17,7 +17,7 @@ export default function AdminUserFormRequests() {
                                             Name
                                     </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            request
+                                            Phone
                                     </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             date
@@ -37,18 +37,18 @@ export default function AdminUserFormRequests() {
                                                 <div class="">
                                                     <div class="">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                       ""
+                                                      {data.data().name}
                                                 </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                  ""
-                                            </span>
+                                                <div  class="text-sm font-medium text-gray-900">
+                                                 {data.data().phone}
+                                            </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            ""
+                                            {new Date(data.data().date.seconds*1000).toDateString()}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <Link className="text-green-500 font-medium" to={`/admin/managers-requests/${data.id}`}>Detailed</Link>

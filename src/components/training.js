@@ -12,7 +12,7 @@ export default function Training() {
     const [done, setDone] = useState(false)
 
     function handleSubmit() {
-        if (name === "" || residence === "" || phone === "" || email === "" || department === [] || program === []) {
+        if (name === "" || residence === "" || phone === "" || email === "" || department.length === 0 || program.length === 0) {
             return;
         } else {
             setLoading(true)

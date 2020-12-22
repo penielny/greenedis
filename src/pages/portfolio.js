@@ -1,5 +1,3 @@
-import { AiOutlineClose } from "react-icons/ai";
-import { Route } from "react-router-dom";
 import JobDetails from "../components/jobdetails";
 import Navbar from "../components/navbar";
 import PrivateRoute from "../components/privateRoute";

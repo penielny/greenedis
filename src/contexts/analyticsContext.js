@@ -79,7 +79,7 @@ export default function AnalyticsProvider({ children }) {
             doc=>setUserRequestForms(doc.docs)
         ).catch(error=>console.log(error.message))
     }
-    const value = {acceptlist,setAcceptlist,rejectlist,setRejectlist, userRequestForms, manRequests,users,setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant ,applicationAcceptTemplate}
+    const value = {acceptlist,setAcceptlist,rejectlist,setRejectlist, userRequestForms, manRequests,users,setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant ,applicationAcceptTemplate,applicationRejectTemplate}
     return (
         <AnalyticsContext.Provider value={value}>
             {loading ? <LoadingScreen /> : children}

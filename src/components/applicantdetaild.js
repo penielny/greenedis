@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useToasts } from 'react-toast-notifications';
 import { smtpserver } from '..';
 import { useAnalytics } from '../contexts/analyticsContext';
-import { acceptApplicant, getApplication, getJobPost, getUser, sendSMS } from '../contexts/store';
+import { acceptApplicant, getApplication, getJobPost, getUser, sendSMS,rejectApplicant } from '../contexts/store';
 import Loading from './loading';
 
 export default function ApplicantDetaild({ match, jobid, userid, history, ...props }) {
@@ -12,7 +12,7 @@ export default function ApplicantDetaild({ match, jobid, userid, history, ...pro
     const [job, setJob] = useState({})
     const [loading, setLoading] = useState(false)
 
-    const { applicationAcceptTemplate } = useAnalytics()
+    const { applicationAcceptTemplate,applicationRejectTemplate } = useAnalytics()
 
     const { addToast } = useToasts()
 
@@ -69,6 +69,26 @@ export default function ApplicantDetaild({ match, jobid, userid, history, ...pro
             )
             .catch(error => toast("error",error.message))
 
+    }
+
+    const rejectApplication = () =>{
+        fetch(smtpserver, { method: "POST", body: JSON.stringify( { reciever: application.email, name: application.name, message: { subject: "GREENEDIS JOB APPLICATION", body: applicationRejectTemplate } }) })
+        .then(
+            data => data.json()
+        )
+        .then(data => {
+            if (data.error === false) {
+                rejectApplicant(match.params.id)
+                    .then(() => toast("success","Notificaation has been sent to Applicant "+application.email))
+                    .catch(error => console.log(error.message))
+            }
+            else {
+                console.log(data.message)
+                toast("error",data.message+" "+application.email)
+            }
+        }
+        )
+        .catch(error => toast("error",error.message))
     }
     // {reciever,name,{message :{ subject ,body}}}
     return (<>
