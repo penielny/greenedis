@@ -51,7 +51,7 @@ export default function AdminUserFormRequests() {
                                             {new Date(data.data().date.seconds*1000).toDateString()}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <Link className="text-green-500 font-medium" to={`/admin/managers-requests/${data.id}`}>Detailed</Link>
+                                                <Link className="text-green-500 font-medium" to={`/admin/user-form/${data.id}`}>Detailed</Link>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete</a>

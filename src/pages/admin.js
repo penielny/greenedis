@@ -11,6 +11,7 @@ import Adminmanagers from "../components/adminmanagers";
 import AdminUserFormRequests from "../components/adminuserform";
 import AdminUerList from "../components/adminuserlist";
 import ManagerRequstDetailed from "./managerrequstdetailed";
+import UserFromDetailed from "../components/userfromdetailed";
 export default function Admin({ match }) {
     const { path, url } = match;
     return (
@@ -25,6 +26,7 @@ export default function Admin({ match }) {
                 <PrivateRoute exact path={`${path}/managers-requests`} component={Adminmanagers} />
                 <PrivateRoute exact path={`${path}/managers-requests/:id`} component={ManagerRequstDetailed} />
                 <PrivateRoute exact path={`${path}/user-form`} component={AdminUserFormRequests} />
+                <PrivateRoute exact path={`${path}/user-form/:id`} component={UserFromDetailed} />
                 <PrivateRoute exact path={`${path}/users`} component={AdminUerList} />
                 <PrivateRoute exact path={`${path}/applications/:id`} component={ApplicantDetaild} />
             </div>
