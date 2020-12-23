@@ -1,13 +1,51 @@
 import React, { useEffect, useState } from 'react'
-import { getRequest } from "../contexts/store"
+import { smtpserver } from '..'
+import { useAnalytics } from '../contexts/analyticsContext'
+import { getRequest, trainingAction } from "../contexts/store"
 import Loading from './loading'
 export default function UserFromDetailed({ match, ...props }) {
     const [doc, setDoc] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const { userRejectTemplate, userAcceptTemplate } = useAnalytics()
+
     useEffect(() => {
         getRequest(match.params.id).get().then(
             dataSnap => setDoc(dataSnap.data())
         ).catch(error => console.log(error.message))
     }, [])
+
+    const acceptForm = () => {
+        setLoading(true)
+        fetch(smtpserver, { method: "POST", body: JSON.stringify({ reciever: doc.email, name: doc.name, message: { subject: "GREENEDIS TRAINING RQUEST APPLICATION", body: userAcceptTemplate } }) })
+            .then(data => data.json())
+            .then(res => {
+                if (res.error === false) {
+
+                    trainingAction(true, match.params.id).then(data => console.log(data)).catch(error => console.log(error.message))
+                }
+                else {
+                    console.log(res.message)
+                }
+            })
+            .finally(() => { setLoading(false) })
+    }
+
+    const rejectForm = () => {
+        setLoading(true)
+        fetch(smtpserver, { method: "POST", body: JSON.stringify({ reciever: doc.email, name: doc.name, message: { subject: "GREENEDIS TRAINING RQUEST APPLICATION", body: userRejectTemplate } }) })
+            .then(data => data.json())
+            .then(res => {
+                if (res.error === false) {
+                    trainingAction(false, match.params.id).then(data => console.log(data)).catch(error => console.log(error.message))
+                }
+                else {
+                    console.log(res.message)
+                }
+            })
+            .finally(() => { setLoading(false) })
+    }
+
+
     return (
         <>
             {
@@ -15,7 +53,7 @@ export default function UserFromDetailed({ match, ...props }) {
                     <div className="flex items-center bg-white p-3 border">
                         <div className="flex-1 flex items-center">
                             <div>
-                                <img className="h-24 w-24" src={doc.image ||"https://firebasestorage.googleapis.com/v0/b/greenedis.appspot.com/o/avatar%2Fkremlin.png?alt=media&token=f3e30ab9-a63d-46c8-9421-dea4b00f907a"} ></img>
+                                <img className="h-24 w-24" src={doc.image || "https://firebasestorage.googleapis.com/v0/b/greenedis.appspot.com/o/avatar%2Fkremlin.png?alt=media&token=f3e30ab9-a63d-46c8-9421-dea4b00f907a"} ></img>
                             </div>
                             <div className="mx-2">
                                 <h3 className="text-sm font-medium text-gray-500">{doc.name}</h3>
@@ -23,8 +61,8 @@ export default function UserFromDetailed({ match, ...props }) {
                             </div>
                         </div>
                         <div>
-                            <button className="px-5 py-3 bg-green-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Accept</button>
-                            <button className="px-5 py-3 bg-red-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Reject</button>
+                            <button disabled={loading} onClick={acceptForm} className="px-5 py-3 bg-green-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Accept</button>
+                            <button disabled={loading} onClick={rejectForm} className="px-5 py-3 bg-red-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Reject</button>
                         </div>
                     </div>
                     <div className="bg-white border p-3 my-3">

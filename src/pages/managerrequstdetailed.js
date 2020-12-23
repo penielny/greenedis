@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { smtpserver } from '..'
 import Loading from '../components/loading'
-import { getManagerWithEmail, managerRequest } from '../contexts/store'
+import { useAnalytics } from '../contexts/analyticsContext'
+import { getManagerWithEmail, managerAction, managerRequest } from '../contexts/store'
 
 export default function ManagerRequstDetailed({ match, history, ...props }) {
+    const {managerAccepptTemplate,managerRejectTemplate}=useAnalytics()
     const [doc, setDoc] = useState({})
     const [user, setUser] = useState({})
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         managerRequest(match.params.id).then(
             docSnap => {
@@ -16,6 +20,57 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
             }
         ).catch(error => console.log(error.message))
     }, [])
+
+    const accept=()=>{
+        setLoading(true)
+        fetch(smtpserver, { method: "POST", body: JSON.stringify({ reciever: doc.email, name: doc.name, message: { subject: "GREENEDIS STAFF RQUEST APPLICATION", body: managerAccepptTemplate } }) })
+            .then(data => data.json())
+            .then(res => {
+                if (res.error === false) {
+                    managerAction({done:true}).then(data=>console.log(data)).catch(error=>console.log(error.message))
+                   
+                }
+                else {
+                    console.log(res.message)
+                }
+            })
+            .finally(() => { setLoading(false) })
+    }
+
+    const reject =()=>{
+        setLoading(true)
+        fetch(smtpserver, { method: "POST", body: JSON.stringify({ reciever: doc.email, name: doc.name, message: { subject: "GREENEDIS STAFF RQUEST APPLICATION", body: managerRejectTemplate } }) })
+            .then(data => data.json())
+            .then(res => {
+                if (res.error === false) {
+                    
+                    managerAction({rejected:true}).then(data=>console.log(data)).catch(error=>console.log(error.message))
+                   
+                }
+                else {
+                    console.log(res.message)
+                }
+            })
+            .finally(() => { setLoading(false) })
+    }
+
+    const processing =()=>{
+        setLoading(true)
+        fetch(smtpserver, { method: "POST", body: JSON.stringify({ reciever: doc.email, name: doc.name, message: { subject: "GREENEDIS STAFF RQUEST APPLICATION", body: "<p>Hello Dear,<p><p>Yor request is been proccesed at the moment</p>" } }) })
+            .then(data => data.json())
+            .then(res => {
+                if (res.error === false) {
+                    managerAction({seen:true}).then(data=>console.log(data)).catch(error=>console.log(error.message))
+                   
+                }
+                else {
+                    console.log(res.message)
+                }
+            })
+            .finally(() => { setLoading(false) })
+    }
+
+
     return (
         <div className="container mx-auto">
             {doc && user ?
@@ -202,8 +257,12 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
                                 </dd>
                             </div>
                             <div className="border-t p-3">
-                                <button className="px-5 py-3 bg-green-600 rounded text-green-50 font-semibold bg-transparent">Accept</button>
-                                <button className="px-5 py-3 bg-red-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Reject</button>
+                                {doc.seen === undefined ?
+                                 <button disabled={loading} onClick={processing} className="px-5 py-3 bg-green-600 rounded text-green-50 font-semibold bg-transparent">Start Processing</button>
+                                :
+                                <button disabled={loading || doc.done} onClick={accept} className="px-5 py-3 bg-green-600 rounded text-green-50 font-semibold bg-transparent">{doc.done===undefined?"Done":"Completed"}</button>
+                                }
+                                <button disabled={loading || doc.rejected==true} onClick={reject} className="px-5 py-3 bg-red-600 rounded text-green-50 ml-4 font-semibold bg-transparent">{doc.rejected===undefined?"Reject":"Rejected"}</button>
                             </div>
                         </dl>
                     </div>
