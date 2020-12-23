@@ -1,7 +1,7 @@
 import { bucket, store } from "../firebase"
 import firebase from "firebase"
 import { v4 as uuid4 } from "uuid"
-import { useAuth } from "./auth"
+
 
 
 export const collections = { appications: "applications", jobs: "jobs", users: "users", cv: "cv", managers: "managers", userRequest: "user-request-form", managerRequests: "manager-requests" }
@@ -162,9 +162,7 @@ export const getAllUserRequestForm = () => {
 
 // send sms
 export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
-    let YOUR_KEY = ""
-    let SENDER_ID = ""
-    let url = `https://api.arispatbulk.com/sendmessage.php?key=${YOUR_KEY}&message=${MESSAGE_TO_SEND}&senderid=${SENDER_ID}&phone=${RECEIPIENT_TELEPHONE_LIST}`
+    let url = `https://api.arispatbulk.com/sendmessage.php?key=${process.env.SMS_KEY}&message=${MESSAGE_TO_SEND}&senderid=${process.env.SMS_SENDER_ID}&phone=${RECEIPIENT_TELEPHONE_LIST}`
     fetch(url)
     .then(data=>console.log(data))
     .finally(error=>console.log(error.message))

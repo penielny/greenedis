@@ -58,7 +58,7 @@ export default function ApplicantDetaild({ match, jobid, userid, history, ...pro
             .then(data => {
                 if (data.error === false) {
                     acceptApplicant(match.params.id)
-                        .then(() => toast("success","Notificaation has been sent to Applicant "+application.email))
+                        .then(() => {sendSMS(applicationRejectTemplate,user.phone);toast("success","Notificaation has been sent to Applicant "+application.email)})
                         .catch(error => console.log(error.message))
                 }
                 else {
@@ -79,7 +79,7 @@ export default function ApplicantDetaild({ match, jobid, userid, history, ...pro
         .then(data => {
             if (data.error === false) {
                 rejectApplicant(match.params.id)
-                    .then(() => toast("success","Notificaation has been sent to Applicant "+application.email))
+                    .then(() =>{ sendSMS(applicationRejectTemplate,user.phone); toast("success","Notificaation has been sent to Applicant "+application.email)})
                     .catch(error => console.log(error.message))
             }
             else {
@@ -207,7 +207,7 @@ export default function ApplicantDetaild({ match, jobid, userid, history, ...pro
                                 disabled={application.accepted}
                                 onClick={acceptApplication}
                                 className={`px-5 py-3 ${application.accepted ?"bg-gray-600"  :"bg-green-600" } rounded text-green-50 font-semibold bg-transparent`}>{application.accepted ? "Aplication Already Accepted" : "Accept" }</button>
-                            {application.accepted !== true && <button className="px-5 py-3 bg-red-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Reject</button>}
+                            {application.accepted !== true && <button  onClick={rejectApplication} className="px-5 py-3 bg-red-600 rounded text-green-50 ml-4 font-semibold bg-transparent">Reject</button>}
                         </div>
                     </dl>
                 </div>

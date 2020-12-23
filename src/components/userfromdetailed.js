@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { smtpserver } from '..'
 import { useAnalytics } from '../contexts/analyticsContext'
-import { getRequest, trainingAction } from "../contexts/store"
+import { getRequest, sendSMS, trainingAction } from "../contexts/store"
 import Loading from './loading'
 export default function UserFromDetailed({ match, ...props }) {
     const [doc, setDoc] = useState(null)
@@ -21,7 +21,7 @@ export default function UserFromDetailed({ match, ...props }) {
             .then(res => {
                 if (res.error === false) {
 
-                    trainingAction(true, match.params.id).then(data => console.log(data)).catch(error => console.log(error.message))
+                    trainingAction(true, match.params.id).then(data => sendSMS(userAcceptTemplate,doc.phone)).catch(error => console.log(error.message))
                 }
                 else {
                     console.log(res.message)
@@ -36,7 +36,7 @@ export default function UserFromDetailed({ match, ...props }) {
             .then(data => data.json())
             .then(res => {
                 if (res.error === false) {
-                    trainingAction(false, match.params.id).then(data => console.log(data)).catch(error => console.log(error.message))
+                    trainingAction(false, match.params.id).then(data =>sendSMS(userRejectTemplate,doc.phone)).catch(error => console.log(error.message))
                 }
                 else {
                     console.log(res.message)
