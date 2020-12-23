@@ -162,7 +162,10 @@ export const getAllUserRequestForm = () => {
 
 // send sms
 export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
-    let url = `https://api.arispatbulk.com/sendmessage.php?key=${process.env.SMS_KEY}&message=${MESSAGE_TO_SEND}&senderid=${process.env.SMS_SENDER_ID}&phone=${RECEIPIENT_TELEPHONE_LIST}`
+
+    let smskey=""
+    let senderId=""
+    let url = `https://api.arispatbulk.com/sendmessage.php?key=${smskey}&message=${MESSAGE_TO_SEND}&senderid=${senderId}&phone=${RECEIPIENT_TELEPHONE_LIST}`
     fetch(url)
     .then(data=>console.log(data))
     .finally(error=>console.log(error.message))

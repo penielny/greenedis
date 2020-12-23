@@ -51,6 +51,7 @@ export default function ApplicantDetaild({ match, jobid, userid, history, ...pro
     }, [])
 
     const acceptApplication = () => {
+        console.log(smtpserver)
         fetch(smtpserver, { method: "POST", body: JSON.stringify( { reciever: application.email, name: application.name, message: { subject: "GREENEDIS JOB APPLICATION", body: applicationAcceptTemplate } }) })
             .then(
                 data => data.json()

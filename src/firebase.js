@@ -4,13 +4,13 @@ import "firebase/storage"
 import "firebase/firestore"
 
 var firebaseConfig = {
-    apiKey:process.env.FIREBASE_API_KEY ,
-    authDomain:process.env.FIREBASE_AUTH_DOMAIN ,
-    projectId:process.env.FIREBASE_PROJECT_ID ,
-    storageBucket:process.env.FIREBASE_STORAGE_BUCKET ,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId:process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MASUREMENT_ID
+    apiKey: "AIzaSyCcWWHGnTqJBxzvAnFar1ErNyq6zlGgeAM",
+    authDomain: "greenedis.firebaseapp.com",
+    projectId: "greenedis",
+    storageBucket: "greenedis.appspot.com",
+    messagingSenderId: "931547277694",
+    appId: "1:931547277694:web:58e73d4d17d41a2ff0ab2f",
+    measurementId: "G-8TCBNPLY73"
   };
 
   const app = firebase.initializeApp(firebaseConfig)
