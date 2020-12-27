@@ -163,8 +163,8 @@ export const getAllUserRequestForm = () => {
 // send sms
 export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
 
-    let smskey=""
-    let senderId=""
+    let smskey="50e8f5cb77e21778125f"
+    let senderId="Green EDIS"
     let url = `https://api.arispatbulk.com/sendmessage.php?key=${smskey}&message=${MESSAGE_TO_SEND}&senderid=${senderId}&phone=${RECEIPIENT_TELEPHONE_LIST}`
     fetch(url)
     .then(data=>console.log(data))
