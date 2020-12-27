@@ -12,6 +12,7 @@ import AdminUserFormRequests from "../components/adminuserform";
 import AdminUerList from "../components/adminuserlist";
 import ManagerRequstDetailed from "./managerrequstdetailed";
 import UserFromDetailed from "../components/userfromdetailed";
+import SettingsPage from "./settingspage";
 export default function Admin({ match }) {
     const { path, url } = match;
     return (
@@ -29,6 +30,7 @@ export default function Admin({ match }) {
                 <PrivateRoute exact path={`${path}/user-form/:id`} component={UserFromDetailed} />
                 <PrivateRoute exact path={`${path}/users`} component={AdminUerList} />
                 <PrivateRoute exact path={`${path}/applications/:id`} component={ApplicantDetaild} />
+                <PrivateRoute exact path={`${path}/settings`} component={SettingsPage} />
             </div>
         </AnalyticsProvider>
     )

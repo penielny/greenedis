@@ -34,7 +34,7 @@ export default function Navbar({ url, admin }) {
                                             <Link to={`${url}/users`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Users</Link>
 
                                             <Link to={`${url}/listing`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Listing</Link>
-                                            <button onClick={() => setSetting(true)} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Setting</button>
+                                            <Link to={`${url}/settings`} className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Setting</Link>
                                         </> :
                                             <>
                                                 <Link to={url} className="focus:bg-gray-900 focus:text-white text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Jobs Listing</Link>

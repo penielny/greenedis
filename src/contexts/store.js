@@ -168,7 +168,7 @@ export const sendSMS = (MESSAGE_TO_SEND,RECEIPIENT_TELEPHONE_LIST) =>{
     let url = `https://api.arispatbulk.com/sendmessage.php?key=${smskey}&message=${MESSAGE_TO_SEND}&senderid=${senderId}&phone=${RECEIPIENT_TELEPHONE_LIST}`
     fetch(url)
     .then(data=>console.log(data))
-    .finally(error=>console.log(error.message))
+    .catch(error=>console.log(error.message))
 }
 
 export const acceptApplicant = (id) =>{

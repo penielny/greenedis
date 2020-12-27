@@ -27,7 +27,7 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
             .then(data => data.json())
             .then(res => {
                 if (res.error === false) {
-                    managerAction({ done: true }).then(data => sendSMS(managerAccepptTemplate, user.phone)).catch(error => console.log(error.message))
+                    managerAction({ done: true },match.params.id).then(data => sendSMS(managerAccepptTemplate, user.phone)).catch(error => console.log(error.message))
 
                 }
                 else {
@@ -44,7 +44,7 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
             .then(res => {
                 if (res.error === false) {
 
-                    managerAction({ rejected: true }).then(data => sendSMS(managerRejectTemplate, user.phone)).catch(error => console.log(error.message))
+                    managerAction({ rejected: true },match.params.id).then(data => sendSMS(managerRejectTemplate, user.phone)).catch(error => console.log(error.message))
 
                 }
                 else {
@@ -60,7 +60,7 @@ export default function ManagerRequstDetailed({ match, history, ...props }) {
             .then(data => data.json())
             .then(res => {
                 if (res.error === false) {
-                    managerAction({ seen: true }).then(data => sendSMS("Hello Dear,Yor request is been proccesed at the moment", user.phone)).catch(error => console.log(error.message))
+                    managerAction({ seen: true },match.params.id).then(data => sendSMS("Hello Dear,Yor request is been proccesed at the moment", user.phone)).catch(error => console.log(error.message))
 
                 }
                 else {

@@ -61,7 +61,7 @@ export default function AnalyticsProvider({ children }) {
     }
     const get_users = () => {
         getUsers().then(
-            doc => {setUserCount(doc.size);setUsers(doc.docs)}
+            doc => { setUserCount(doc.size); setUsers(doc.docs) }
         ).catch(error => console.log(error.message))
     }
     const get_aplicant = () => {
@@ -74,12 +74,24 @@ export default function AnalyticsProvider({ children }) {
             docSnap => setManRequests(docSnap.docs)
         ).catch(error => console.log(error.message))
     }
-    const get_all_user_Request_Forms = ()=>{
+    const get_all_user_Request_Forms = () => {
         getAllUserRequestForm().then(
-            doc=>setUserRequestForms(doc.docs)
-        ).catch(error=>console.log(error.message))
+            doc => setUserRequestForms(doc.docs)
+        ).catch(error => console.log(error.message))
     }
-    const value = {acceptlist,setAcceptlist,rejectlist,setRejectlist, userRequestForms, manRequests,users,setting, setSetting, jobs, applicants, userCount, setApplicants, setJobs, refreshJobs: jobs_get, refreshUsers: get_users, refreshApplicant: get_aplicant ,applicationAcceptTemplate,applicationRejectTemplate}
+    const value = {
+        acceptlist, setAcceptlist, rejectlist, setRejectlist,
+        userRequestForms, manRequests, users, setting, setSetting,
+        jobs, applicants, userCount, setApplicants, setJobs,
+        refreshJobs: jobs_get, refreshUsers: get_users,
+        refreshApplicant: get_aplicant, applicationAcceptTemplate,
+        applicationRejectTemplate, setApplicationAcceptTemplate,
+        setApplicationRejectTemplate, managerAccepptTemplate,
+        setManagerAccepptTemplate, managerRejectTemplate,
+        setManagerRejectTemplate, userAcceptTemplate,
+        setUserAcceptTemplate, userRejectTemplate,
+        setUserRejectTemplate
+    }
     return (
         <AnalyticsContext.Provider value={value}>
             {loading ? <LoadingScreen /> : children}
